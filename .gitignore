@@ -1,0 +1,13 @@
+.idea/
+cmake-build-debug/
+
+# Libs
+include/*/*/
+include/*/*
+!include/*/include/
+
+## ASIO STANDALONE
+#include/asio-1.24.0/*/
+#include/asio-1.24.0/*
+#!include/asio-1.24.0/include/
+
