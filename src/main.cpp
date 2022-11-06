@@ -8,6 +8,8 @@
 //using namespace std;
 
 int main() {
+    std::cout << "src/main.cpp called" << std::endl;
+
     asio::error_code error_code;
     // ASIO needs a unique space to perform stuff and does it in
     // this space called io_context handles any specific platform
@@ -27,9 +29,8 @@ int main() {
     //
     // endpoint as the door or the destination we're trying to reach
 
-//    const char *ip = "93.184.216.34";
-//    asio::ip::tcp::endpoint endpoint(asio::ip::make_address(ip, error_code), 80);
-    asio::ip::tcp::endpoint endpoint(asio::ip::make_address("93.184.216.34", error_code), 80);
+    const char *endpoint_address = "93.184.216.34";
+    asio::ip::tcp::endpoint endpoint(asio::ip::make_address(endpoint_address, error_code), 80);
 
     // Socket can be described as a doorway or bridge "the means through"
     // we're connecting to our endpoint
@@ -42,13 +43,13 @@ int main() {
 
     if(!error_code)
     {
-        std::cout << "Connected!" << std::endl;
+        std::cout << "Connected to \"" << endpoint_address << "\"" << std::endl;
     }
     else
     {
-        std::cout << "Failed to connect... \n Details:\n" << error_code.message() << std::endl;
+        std::cout << "Failed to connect to \""<< endpoint_address <<"\"" << std::endl
+        << "Details:\n" << error_code.message() << std::endl;
     }
 
-    std::cout << "src/main.cpp called" << std::endl;
     return 0;
 }
